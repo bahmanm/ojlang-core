@@ -6,6 +6,8 @@ import org.eclipse.collections.impl.list.mutable.FastList;
 import org.ojlang.models.contracts.SystemWord;
 
 /**
+ * Registry of Oj system words.
+ *
  * @author Bahman Movaqar [Bahman AT BahmanM.com]
  */
 public class SystemWordsRegistry {

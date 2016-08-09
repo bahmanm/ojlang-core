@@ -4,6 +4,9 @@ import lombok.val;
 import org.ojlang.models.contracts.Word;
 
 /**
+ * Represents a user-defined word.
+ *
+ * @see Word
  * @author Bahman Movaqar [Bahman AT BahmanM.com]
  */
 public class WordImpl implements org.ojlang.models.contracts.Word {

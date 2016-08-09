@@ -7,6 +7,9 @@ import org.ojlang.models.contracts.Memory;
 import java.util.List;
 
 /**
+ * Memory implementation based on an array list.
+ *
+ * @see Memory
  * @author Bahman Movaqar [Bahman AT BahmanM.com]
  */
 public class MemoryImpl implements Memory {
@@ -27,13 +30,6 @@ public class MemoryImpl implements Memory {
     if (addr < 0)
       throw new InvalidMemoryAddressException(addr);
     return delegate.get(addr);
-  }
-
-  @Override
-  public Memory
-  clear() {
-    delegate.clear();
-    return this;
   }
 
   @Override

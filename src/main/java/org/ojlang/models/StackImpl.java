@@ -2,11 +2,15 @@ package org.ojlang.models;
 
 import org.eclipse.collections.api.stack.MutableStack;
 import org.eclipse.collections.impl.stack.mutable.ArrayStack;
+import org.ojlang.models.contracts.Stack;
 
 /**
+ * Implementation of stack based MutableStack from Eclipse Collections.
+ *
+ * @see Stack
  * @author Bahman Movaqar [Bahman AT BahmanM.com]
  */
-public class StackImpl<T> implements org.ojlang.models.contracts.Stack<T> {
+public class StackImpl<T> implements Stack<T> {
 
   final static private long serialVersionUID = 2430546690528947971L;
 
@@ -25,14 +29,14 @@ public class StackImpl<T> implements org.ojlang.models.contracts.Stack<T> {
   }
 
   @Override
-  public org.ojlang.models.contracts.Stack
+  public Stack
   clear() {
     delegate.clear();
     return this;
   }
 
   @Override
-  public org.ojlang.models.contracts.Stack
+  public Stack
   push(
     T arg
   ) {

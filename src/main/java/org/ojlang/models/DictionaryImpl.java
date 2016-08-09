@@ -6,9 +6,10 @@ import org.ojlang.exceptions.WordNotFoundException;
 import org.ojlang.models.contracts.Dictionary;
 import org.ojlang.models.contracts.Word;
 
-import java.io.Serializable;
-
 /**
+ * Dictionary implementation based on a map.
+ *
+ * @see Dictionary
  * @author Bahman Movaqar [Bahman AT BahmanM.com]
  */
 public class DictionaryImpl implements Dictionary {

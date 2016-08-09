@@ -13,6 +13,8 @@ import org.ojlang.models.contracts.ParamStack;
 import org.ojlang.models.contracts.ReturnStack;
 
 /**
+ * Oj runtime.
+ *
  * @author Bahman Movaqar [Bahman AT BahmanM.com]
  */
 @Accessors(fluent = true)
@@ -35,6 +37,14 @@ public class Runtime {
 
   private Runtime() {}
 
+  /**
+   * Creates a new instance of Oj runtime.
+   * It basically initialises dictionary, return/param stacks with clean states,
+   * and puts the XT of system words in memory (starting from 0).
+   *
+   * @see SystemWordsRegistry
+   * @return
+   */
   static public Runtime setup() {
     val runtime = new Runtime();
     SystemWordsRegistry.words().each(w -> {
