@@ -1,0 +1,12 @@
+/.idea
+/target
+*.iml
+*.class
+*.jar
+*~*
+*\#*
+.project
+.classpath
+/build
+/bin
+
