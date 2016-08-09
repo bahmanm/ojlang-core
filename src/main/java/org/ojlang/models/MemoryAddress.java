@@ -3,6 +3,8 @@ package org.ojlang.models;
 import lombok.Getter;
 import lombok.experimental.Accessors;
 
+import java.io.Serializable;
+
 /**
  * Represents a memory address (e.g. to jump to).
  * Though this class is a simple wrapper for an `int`, wihtout it the
@@ -12,7 +14,9 @@ import lombok.experimental.Accessors;
  * @author Bahman Movaqar [Bahman AT BahmanM.com]
  */
 @Accessors(fluent = true)
-public class MemoryAddress {
+public class MemoryAddress implements Serializable {
+
+  final static private long serialVersionUID = 41600880904248460L;
 
   @Getter
   private int value;

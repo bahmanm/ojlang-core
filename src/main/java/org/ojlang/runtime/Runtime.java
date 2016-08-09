@@ -12,13 +12,17 @@ import org.ojlang.models.contracts.Memory;
 import org.ojlang.models.contracts.ParamStack;
 import org.ojlang.models.contracts.ReturnStack;
 
+import java.io.Serializable;
+
 /**
  * Oj runtime.
  *
  * @author Bahman Movaqar [Bahman AT BahmanM.com]
  */
 @Accessors(fluent = true)
-public class Runtime {
+public class Runtime implements Serializable {
+
+  final static private long serialVersionUID = 8428732629851491287L;
 
   @Getter
   final private Dictionary dict = new DictionaryImpl();
