@@ -1,5 +1,7 @@
 package org.ojlang.models.contracts;
 
+import org.ojlang.models.MemoryAddress;
+
 import java.io.Serializable;
 
 /**
@@ -34,7 +36,7 @@ public interface Word extends Serializable {
    * @param addr the given address
    * @return the modified word
    */
-  Word pushAddr(int addr);
+  Word pushAddr(MemoryAddress addr);
 
   /**
    * Returns the name of the word.

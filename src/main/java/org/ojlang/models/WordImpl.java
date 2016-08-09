@@ -9,31 +9,31 @@ import org.ojlang.models.contracts.Word;
  * @see Word
  * @author Bahman Movaqar [Bahman AT BahmanM.com]
  */
-public class WordImpl implements org.ojlang.models.contracts.Word {
+public class WordImpl implements Word {
 
   final static private long serialVersionUID = 350197946204676041L;
 
   private String name;
-  final private StackImpl<Integer> memAddresses = new StackImpl<Integer>();
+  final private StackImpl<MemoryAddress> memAddresses = new StackImpl<MemoryAddress>();
 
   private WordImpl() {}
 
   @Override
   public int
   popAddr() {
-    return memAddresses.pop();
+    return memAddresses.pop().value();
   }
 
   @Override
   public int
   peekAddr() {
-    return memAddresses.peek();
+    return memAddresses.peek().value();
   }
 
   @Override
   public Word
   pushAddr(
-    int addr
+    MemoryAddress addr
   ) {
     memAddresses.push(addr);
     return this;
@@ -52,8 +52,8 @@ public class WordImpl implements org.ojlang.models.contracts.Word {
     return result;
   }
 
-  static public Word create(String name, int addr) {
-    assert(addr >= 0);
+  static public Word create(String name, MemoryAddress addr) {
+    assert(addr.value() >= 0);
     return create(name).pushAddr(addr);
   }
 
