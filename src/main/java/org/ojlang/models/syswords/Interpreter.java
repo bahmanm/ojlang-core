@@ -10,7 +10,7 @@ import org.ojlang.models.contracts.SystemState;
 public class Interpreter extends AbstractSystemWord {
 
   final static private long serialVersionUID = -1299211002338774173L;
-  
+
   @Override
   public SystemState
   execute(
