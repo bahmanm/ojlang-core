@@ -45,4 +45,11 @@ public interface SystemState extends Serializable {
    */
   ParamStack ps();
 
+  /**
+   * System memory size; i.e. number of system words registered in Oj
+   *
+   * @return system memory size
+   */
+  int sysMemSize();
+
 }

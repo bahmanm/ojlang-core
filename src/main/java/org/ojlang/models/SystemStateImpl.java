@@ -16,6 +16,7 @@ public class SystemStateImpl implements SystemState {
   private ReturnStack rs;
   private ParamStack ps;
   private int xp;
+  private int sysMemSize;
 
   private SystemStateImpl() {}
 
@@ -27,11 +28,13 @@ public class SystemStateImpl implements SystemState {
    * @param rs system return stack
    * @param ps system parameter stack
    * @param xp system execution pointer
+   * @param sysMemSize system memory size
    * @return a system execution state
    */
   static public SystemStateImpl
   create(
-    Memory mem, Dictionary dict, ReturnStack rs, ParamStack ps, int xp
+    Memory mem, Dictionary dict, ReturnStack rs, ParamStack ps,
+    int xp, int sysMemSize
   ) {
     val result = new SystemStateImpl();
     result.mem = mem;
@@ -39,6 +42,7 @@ public class SystemStateImpl implements SystemState {
     result.ps = ps;
     result.rs = rs;
     result.xp = xp;
+    result.sysMemSize = sysMemSize;
     return result;
   }
 
@@ -65,6 +69,11 @@ public class SystemStateImpl implements SystemState {
   @Override
   public int xp() {
     return xp;
+  }
+
+  @Override
+  public int sysMemSize() {
+    return sysMemSize;
   }
 
 }
