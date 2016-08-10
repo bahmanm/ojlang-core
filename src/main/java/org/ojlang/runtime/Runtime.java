@@ -26,19 +26,7 @@ public class Runtime implements Serializable {
   final static private long serialVersionUID = 8428732629851491287L;
 
   @Getter
-  private int xp;
-
-  @Getter
-  private Dictionary dict;
-
-  @Getter
-  private Memory mem;
-
-  @Getter
-  private ReturnStack rs;
-
-  @Getter
-  private ParamStack ps;
+  private SystemState systat;
 
   @Getter
   private int sysMemSize;
@@ -65,15 +53,11 @@ public class Runtime implements Serializable {
   ) {
     assert(systat != null && sysWords != null);
     val runtime = new Runtime();
-    runtime.mem = systat.mem();
-    runtime.dict = systat.dict();
-    runtime.rs = systat.rs();
-    runtime.ps = systat.ps();
-    runtime.xp = systat.xp();
+    runtime.systat = systat;
     runtime.sysMemSize = sysWords.size();
     sysWords.forEach(w -> {
-      runtime.dict.put(w);
-      runtime.mem.add(w.name());
+      runtime.systat.dict().put(w);
+      runtime.systat.mem().add(w.name());
     });
     return runtime;
   }
