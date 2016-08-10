@@ -15,6 +15,7 @@ public class SystemStateImpl implements SystemState {
   private Dictionary dict;
   private ReturnStack rs;
   private ParamStack ps;
+  private int xp;
 
   private SystemStateImpl() {}
 
@@ -25,38 +26,45 @@ public class SystemStateImpl implements SystemState {
    * @param dict system dictionary
    * @param rs system return stack
    * @param ps system parameter stack
+   * @param xp system execution pointer
    * @return a system execution state
    */
   static public SystemStateImpl
   create(
-    Memory mem, Dictionary dict, ReturnStack rs, ParamStack ps
+    Memory mem, Dictionary dict, ReturnStack rs, ParamStack ps, int xp
   ) {
     val result = new SystemStateImpl();
     result.mem = mem;
     result.dict = dict;
     result.ps = ps;
     result.rs = rs;
+    result.xp = xp;
     return result;
   }
 
   @Override
   public Memory mem() {
-    return null;
+    return mem;
   }
 
   @Override
   public Dictionary dict() {
-    return null;
+    return dict;
   }
 
   @Override
   public ReturnStack rs() {
-    return null;
+    return rs;
   }
 
   @Override
   public ParamStack ps() {
-    return null;
+    return ps;
+  }
+
+  @Override
+  public int xp() {
+    return xp;
   }
 
 }

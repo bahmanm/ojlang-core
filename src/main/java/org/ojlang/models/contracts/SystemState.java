@@ -11,6 +11,13 @@ import java.io.Serializable;
 public interface SystemState extends Serializable {
 
   /**
+   * System execution pointer
+   *
+   * @return system execution pointer
+   */
+  int xp();
+
+  /**
    * System memory.
    *
    * @return system memory
