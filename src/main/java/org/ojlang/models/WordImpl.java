@@ -14,26 +14,26 @@ public class WordImpl implements Word {
   final static private long serialVersionUID = 350197946204676041L;
 
   private String name;
-  final private StackImpl<MemoryAddress> memAddresses = new StackImpl<MemoryAddress>();
+  final private StackImpl<Xt> memAddresses = new StackImpl<Xt>();
 
   private WordImpl() {}
 
   @Override
   public int
-  popAddr() {
+  popXt() {
     return memAddresses.pop().value();
   }
 
   @Override
   public int
-  peekAddr() {
+  xt() {
     return memAddresses.peek().value();
   }
 
   @Override
   public Word
-  pushAddr(
-    MemoryAddress addr
+  pushXt(
+    Xt addr
   ) {
     memAddresses.push(addr);
     return this;
@@ -52,9 +52,9 @@ public class WordImpl implements Word {
     return result;
   }
 
-  static public Word create(String name, MemoryAddress addr) {
+  static public Word create(String name, Xt addr) {
     assert(addr.value() >= 0);
-    return create(name).pushAddr(addr);
+    return create(name).pushXt(addr);
   }
 
 }

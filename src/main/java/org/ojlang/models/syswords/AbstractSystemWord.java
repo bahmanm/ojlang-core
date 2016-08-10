@@ -1,6 +1,6 @@
 package org.ojlang.models.syswords;
 
-import org.ojlang.models.MemoryAddress;
+import org.ojlang.models.Xt;
 import org.ojlang.models.contracts.SystemWord;
 import org.ojlang.models.contracts.Word;
 
@@ -11,20 +11,20 @@ abstract public class AbstractSystemWord implements SystemWord {
 
   @Override
   public int
-  popAddr() {
+  popXt() {
     throw new RuntimeException("Illegal operation on a system word");
   }
 
   @Override
   public int
-  peekAddr() {
+  xt() {
     throw new RuntimeException("Illegal operation on a system word");
   }
 
   @Override
   public Word
-  pushAddr(
-    MemoryAddress addr
+  pushXt(
+    Xt addr
   ) {
     throw new RuntimeException("Illegal operation on a system word");
   }

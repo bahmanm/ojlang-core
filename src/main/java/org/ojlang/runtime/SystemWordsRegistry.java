@@ -27,5 +27,5 @@ public class SystemWordsRegistry implements Serializable {
   static public int size() {
     return words.size();
   }
-
+  
 }

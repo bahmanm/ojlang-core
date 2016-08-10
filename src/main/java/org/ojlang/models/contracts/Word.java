@@ -1,6 +1,6 @@
 package org.ojlang.models.contracts;
 
-import org.ojlang.models.MemoryAddress;
+import org.ojlang.models.Xt;
 
 import java.io.Serializable;
 
@@ -21,22 +21,22 @@ public interface Word extends Serializable {
    *
    * @return the (starting) memory address of the most recent definition.
    */
-  int popAddr();
+  int popXt();
 
   /**
    * Peeks at the most recent address of the word definition.
    *
    * @return the (starting) memory address of the most recent definition.
    */
-  int peekAddr();
+  int xt();
 
   /**
-   * Pushes a new memory address (i.e. a new definition of the word).
+   * Pushes a new execution token (i.e. a new definition of the word).
    *
-   * @param addr the given address
+   * @param xt the given xt
    * @return the modified word
    */
-  Word pushAddr(MemoryAddress addr);
+  Word pushXt(Xt xt);
 
   /**
    * Returns the name of the word.
