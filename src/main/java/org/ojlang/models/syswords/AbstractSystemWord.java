@@ -30,11 +30,6 @@ abstract public class AbstractSystemWord implements SystemWord {
   }
 
   @Override
-  public String name() {
-    return null;
-  }
-
-  @Override
   final public boolean
   isSystemWord() {
     return false;
