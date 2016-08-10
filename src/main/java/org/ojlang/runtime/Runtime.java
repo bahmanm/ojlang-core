@@ -58,7 +58,8 @@ public class Runtime implements Serializable {
    * @param sysWords system words
    * @return a new instance of runtime
    */
-  static public Runtime init(
+  static public Runtime
+  init(
     SystemState systat,
     List<SystemWord> sysWords
   ) {
