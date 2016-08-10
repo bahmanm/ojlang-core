@@ -18,6 +18,14 @@ public interface SystemState extends Serializable {
   int xp();
 
   /**
+   * Sets a new value for the instruction pointer (i.e. jump).
+   *
+   * @param newXp new XP
+   * @return modified system state
+   */
+  SystemState xp(int newXp);
+
+  /**
    * System memory.
    *
    * @return system memory

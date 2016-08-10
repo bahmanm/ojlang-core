@@ -76,4 +76,13 @@ public class SystemStateImpl implements SystemState {
     return sysMemSize;
   }
 
+  @Override
+  public SystemStateImpl
+  xp(
+    int newXp
+  ) {
+    xp = newXp;
+    return this;
+  }
+
 }
