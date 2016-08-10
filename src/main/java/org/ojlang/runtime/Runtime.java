@@ -4,10 +4,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.experimental.Accessors;
 import lombok.val;
-import org.ojlang.models.DictionaryImpl;
-import org.ojlang.models.MemoryImpl;
-import org.ojlang.models.ParamStackImpl;
-import org.ojlang.models.ReturnStackImpl;
+import org.ojlang.models.*;
 import org.ojlang.models.contracts.*;
 
 import java.io.Serializable;
@@ -27,10 +24,7 @@ public class Runtime implements Serializable {
 
   @Getter
   private SystemState systat;
-
-  @Getter
-  private int sysMemSize;
-
+  
   /**
    * Private constructor.  Use `init`.
    */
@@ -38,23 +32,29 @@ public class Runtime implements Serializable {
 
   /**
    * Initialises a new instance of Oj runtime.
-   * It basically initialises dictionary, return/param stacks with given states,
-   * and puts the XT of system words in memory (starting from 0).
+   * It basically initialises dictionary, return/param stacks with clean states,
+   * puts the XT of system words in memory (starting from 0) and sets the XP to
+   * the first word immediately after system memory.
    *
    * @see SystemWordsRegistry
-   * @param systat system execution state
    * @param sysWords system words
    * @return a new instance of runtime
    */
   static public Runtime
-  init(
-    SystemState systat,
+  initClean(
     List<SystemWord> sysWords
   ) {
-    assert(systat != null && sysWords != null);
+    assert(sysWords != null);
     val runtime = new Runtime();
-    runtime.systat = systat;
-    runtime.sysMemSize = sysWords.size();
+    val sysMemsize = sysWords.size();
+    runtime.systat = SystemStateImpl.create(
+      new MemoryImpl(),
+      new DictionaryImpl(),
+      new ReturnStackImpl(),
+      new ParamStackImpl(),
+      sysMemsize,
+      sysMemsize
+    );
     sysWords.forEach(w -> {
       runtime.systat.dict().put(w);
       runtime.systat.mem().add(w.name());
