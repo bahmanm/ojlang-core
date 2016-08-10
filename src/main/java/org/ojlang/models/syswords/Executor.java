@@ -10,7 +10,7 @@ public class Executor extends AbstractSystemWord {
   final static private long serialVersionUID = 2676320309358760392L;
 
   @Override
-  public void
+  public SystemState
   execute(
     SystemState systat
   ) {

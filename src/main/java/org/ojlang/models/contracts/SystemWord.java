@@ -20,7 +20,7 @@ public interface SystemWord extends Word {
    *
    * @param systat the snapshot of the system state before execution
    */
-  void execute(
+  SystemState execute(
     SystemState systat
   );
 
