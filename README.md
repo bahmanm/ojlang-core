@@ -1,3 +1,16 @@
+**Table of Contents**
+- [Introduction](#introduction)
+- [Design](#design)
+	- [Execution Model](#execution-model)
+	- [Data Structures](#data-structures)
+	 - [Word](#word)
+	 - [Memory](#memory)
+	 - [Dictionary](#dictionary)
+	 - [Parameter Stack](#parameter-stack)
+	 - [Return Stack](#return-stack)
+	 - [Execution Pointer](#execution-pointer)
+- [Roadmap](#roadmap)
+
 # Introduction #
 Oj (pronounced like Owl) is a Forth on JVM.
 
