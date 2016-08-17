@@ -1,7 +1,7 @@
 package org.ojlang.runtime;
 
 /**
- * This has a special meaning to Executor.  Whenever the XP reaches a memory cell
+ * This has a special meaning to Executor; whenever the XP points to a memory cell
  * which contains a Return instance, the Executor understands that it should pop
  * the RS and continue execution from there.
  *
