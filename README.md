@@ -94,10 +94,12 @@ It is simply the current memory address that is being executed; quite like an `I
 register in the X86 architecture.
 
 # Roadmap #
+
 ## v1.0 ##
 FORTH
 * FORTH-83 semi-compliance
   + [FORTH-83 required word set](http://forth.sourceforge.net/standard/fst83/fst83-12.htm)
+
 ## v2.0 ##
 Interoperability
 * JVM Interoperability
@@ -106,14 +108,17 @@ Interoperability
 * Java Interoperability
   + Implementing interfaces
   + Extending classes
+
 ## v3.0 ##
 Concurrency and asynchronous word set
 * Threads, runnables and tasks
   + [Runnable](https://docs.oracle.com/javase/8/docs/api/java/lang/Runnable.html)
   + [FutureTask](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/FutureTask.html)
   + [Thread](https://docs.oracle.com/javase/8/docs/api/java/lang/Thread.html)
+
 ## v4.0 ##
 Coroutines and seamless async operations word set
+
 ## Even farther future ##
 * Data persistence (RDBMS, NoSQL)
 * Web programming done Forth style
