@@ -12,6 +12,8 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import static org.ojlang.models.ModelFactory.*;
+
 /**
  * Oj runtime.
  *
@@ -24,7 +26,7 @@ public class Runtime implements Serializable {
 
   @Getter
   private SystemState systat;
-  
+
   /**
    * Private constructor.  Use `init`.
    */
@@ -48,10 +50,10 @@ public class Runtime implements Serializable {
     val runtime = new Runtime();
     val sysMemsize = sysWords.size();
     runtime.systat = SystemStateImpl.create(
-      new MemoryImpl(),
-      new DictionaryImpl(),
-      new ReturnStackImpl(),
-      new ParamStackImpl(),
+      createMem(),
+      createDict(),
+      createRS(),
+      createPS(),
       sysMemsize,
       sysMemsize
     );
