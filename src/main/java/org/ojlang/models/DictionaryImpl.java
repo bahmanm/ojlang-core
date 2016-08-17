@@ -23,7 +23,7 @@ public class DictionaryImpl implements Dictionary {
     String name
   ) {
     assert(name != null && name.length() > 0);
-    if (delegate.contains(name))
+    if (delegate.containsKey(name))
       return delegate.get(name);
     else
       throw new WordNotFoundException(name);
