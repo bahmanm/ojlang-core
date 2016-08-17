@@ -6,6 +6,7 @@ import org.eclipse.collections.impl.list.mutable.FastList;
 import org.ojlang.models.contracts.SystemWord;
 import org.ojlang.models.syswords.Interpreter;
 import org.ojlang.models.syswords.io.Puts;
+import org.ojlang.models.syswords.math.Add;
 import org.ojlang.models.syswords.sys.Bye;
 
 import java.io.Serializable;
@@ -23,7 +24,8 @@ public class SystemWordsRegistry implements Serializable {
   final private static FastList<SystemWord> words = FastList.newListWith(
     new Interpreter(),
     new Puts(),
-    new Bye()
+    new Bye(),
+    new Add()
   );
 
   static public int size() {
