@@ -1,12 +1,9 @@
 package org.ojlang.models.syswords.sys
 
-import org.junit.Assert
 import org.junit.Rule
 import org.junit.Test
 import org.junit.contrib.java.lang.system.ExpectedSystemExit
-import org.ojlang.runtime.Runtime
 
-import static org.junit.Assert.fail
 import static org.ojlang.TestUtils.freshSystat
 
 /**
