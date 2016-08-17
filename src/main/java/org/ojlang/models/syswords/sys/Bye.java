@@ -4,19 +4,22 @@ import org.ojlang.models.contracts.SystemState;
 import org.ojlang.models.syswords.AbstractSystemWord;
 
 /**
- * Exits 
+ * ( -- )
+ * Quits Oj and shuts down the JVM with code 0.
+ *
  * @author Bahman Movaqar [Bahman AT BahmanM.com]
  */
-public class SysExit extends AbstractSystemWord {
+public class Bye extends AbstractSystemWord {
 
   @Override
   public SystemState execute(SystemState systat) {
-    return null;
+    System.exit(0);
+    return systat;
   }
 
   @Override
   public String name() {
-    return null;
+    return "BYE";
   }
 
 }
