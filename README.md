@@ -10,6 +10,7 @@
 	 - [Return Stack](#return-stack)
 	 - [Execution Pointer](#execution-pointer)
 - [Roadmap](#roadmap)
+- [License](#license)
 
 # Introduction #
 Oj (pronounced like Owl) is a Forth on JVM.
@@ -124,3 +125,5 @@ Coroutines and seamless async operations word set
 * Web programming done Forth style
 * ...
 
+# License #
+Oj is licensed under [Apache License v2.0](http://www.apache.org/licenses/LICENSE-2.0).
