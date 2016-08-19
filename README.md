@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/bahmanm/ojlang-core.svg?branch=master)](https://travis-ci.org/bahmanm/ojlang-core) 
+
 **Table of Contents**
 - [Introduction](#introduction)
 - [Design](#design)
