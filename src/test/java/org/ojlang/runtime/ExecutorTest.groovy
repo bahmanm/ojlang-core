@@ -15,12 +15,15 @@
  */
 package org.ojlang.runtime
 
+import org.junit.Assert
 import org.junit.Rule
 import org.junit.Test
 import org.junit.contrib.java.lang.system.ExpectedSystemExit
 import org.junit.contrib.java.lang.system.SystemOutRule
 import org.ojlang.models.WordImpl
 import org.ojlang.models.Xt
+
+import static org.junit.Assert.fail
 
 /**
  * @author Bahman Movaqar [Bahman AT BahmanM.com]
@@ -173,6 +176,33 @@ class ExecutorTest {
     systat.mem().add(
       Return.instance
     )
+    systat.xp(systat.sysMemSize())
+    systat
+  }
+
+  @Test
+  void testRun_null_add_bye() {
+    def systat = systat_null_puts_bye()
+    try {
+      Executor.run(systat)
+      fail('should have thrown NPE')
+    } catch (NullPointerException) {
+      assert systat.ps().size() == 0
+    }
+  }
+
+  def systat_null_puts_bye() {
+    def systat = Runtime.initClean(SystemWordsRegistry.words()).systat()
+    systat.mem().add(
+      null
+    )
+    systat.mem().add(
+      sysWordXt('ADD')
+    )
+    systat.mem().add(
+      sysWordXt('BYE')
+    )
+    systat.ps().push(1)
     systat.xp(systat.sysMemSize())
     systat
   }

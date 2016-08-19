@@ -32,7 +32,9 @@ public class Executor {
   ) {
     while (true) {
       Object obj = systat.mem().get(systat.xp());
-      if (obj.getClass().equals(Xt.class))
+      if (obj == null)
+        executeObject(systat, null);
+      else if (obj.getClass().equals(Xt.class))
         executeWord(systat, (Xt) obj);
       else if (obj.getClass().equals(Return.class))
         executeReturn(systat, (Return) obj);
