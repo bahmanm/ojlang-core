@@ -23,7 +23,8 @@ Oj (pronounced like Owl) is a Forth on JVM.
  it's a good idea to take a few minutes and read the post first.*
 
 ## Execution Model ##
-*TODO*
+### Executor ###
+![Executor flowchart](https://github.com/bahmanm/ojlang-core/blob/master/docs/images/executor-flowchart.png)
 
 ## Data Structures ##
 Oj runtime is designed to resemble a simple processor architecture.  It consists
