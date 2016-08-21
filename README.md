@@ -18,7 +18,7 @@
 Oj (pronounced like Owl) is a Forth on JVM.
 
 # Design #
-*NOTE: As the general design follows the guidlines in
+*NOTE: As the general design follows the guidelines in
  [Thoughts On JVM-based Forth Implementation](http://www.bahmanm.com/blogs/thoughts-on-jvm-based-forth-implementation)
  it's a good idea to take a few minutes and read the post first.*
 
