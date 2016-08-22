@@ -22,8 +22,6 @@ import org.junit.Test
 import org.junit.contrib.java.lang.system.ExpectedSystemExit
 import org.ojlang.runtime.Runtime
 
-import static org.ojlang.TestUtils.freshSystat
-
 /**
  * @author Bahman Movaqar [Bahman AT BahmanM.com]
  */
