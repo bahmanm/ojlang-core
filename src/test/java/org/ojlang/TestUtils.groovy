@@ -21,5 +21,5 @@ import org.ojlang.sysdef.Systat
  * @author Bahman Movaqar [Bahman AT BahmanM.com]
  */
 class TestUtils {
-  
+
 }

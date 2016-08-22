@@ -19,7 +19,6 @@ import lombok.Getter;
 import lombok.experimental.Accessors;
 import org.eclipse.collections.impl.list.mutable.FastList;
 import org.ojlang.sysdef.SysWord;
-import org.ojlang.syswords.Interpreter;
 import org.ojlang.syswords.io.Puts;
 import org.ojlang.syswords.math.Add;
 import org.ojlang.syswords.sys.Bye;
