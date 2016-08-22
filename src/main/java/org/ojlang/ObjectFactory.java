@@ -16,6 +16,7 @@
 
 package org.ojlang;
 
+import lombok.val;
 import org.ojlang.sysdef.*;
 import org.ojlang.sysdef.impls.*;
 
@@ -70,6 +71,32 @@ final public class ObjectFactory {
    */
   static public <T> Stack<T> createStack() {
     return new MutableArrayStack<T>();
+  }
+
+  /**
+   * Creates a system execution state.
+   *
+   * @param mem system memory
+   * @param dict system dictionary
+   * @param rs system return stack
+   * @param ps system parameter stack
+   * @param xp system execution pointer
+   * @param sysMemSize system memory size
+   * @return a system execution state
+   */
+  static public OjSystat
+  createSystat(
+    Mem mem, Dict dict, RS rs, PS ps,
+    int xp, int sysMemSize
+  ) {
+    val result = new OjSystat();
+    result.mem(mem);
+    result.dict(dict);
+    result.ps(ps);
+    result.rs(rs);
+    result.xp(xp);
+    result.sysMemSize(sysMemSize);
+    return result;
   }
 
 }

@@ -18,14 +18,12 @@ package org.ojlang.runtime;
 import lombok.Getter;
 import lombok.experimental.Accessors;
 import lombok.val;
-import org.ojlang.sysdef.impls.OjSystat;
-import org.ojlang.sysdef.Systat;
+import org.ojlang.ObjectFactory;
 import org.ojlang.sysdef.SysWord;
+import org.ojlang.sysdef.Systat;
 
 import java.io.Serializable;
 import java.util.List;
-
-import static org.ojlang.sysdef.ModelFactory.*;
 
 /**
  * Oj runtime.
@@ -62,11 +60,11 @@ public class Runtime implements Serializable {
     assert(sysWords != null);
     val runtime = new Runtime();
     val sysMemsize = sysWords.size();
-    runtime.systat = OjSystat.create(
-      createMem(),
-      createDict(),
-      createRS(),
-      createPS(),
+    runtime.systat = ObjectFactory.createSystat(
+      ObjectFactory.createMem(),
+      ObjectFactory.createDict(),
+      ObjectFactory.createRS(),
+      ObjectFactory.createPS(),
       sysMemsize,
       sysMemsize
     );

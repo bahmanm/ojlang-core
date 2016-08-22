@@ -15,10 +15,7 @@
  */
 package org.ojlang
 
-import org.ojlang.sysdef.impls.OjSystat
 import org.ojlang.sysdef.Systat
-
-import static org.ojlang.sysdef.ModelFactory.*
 
 /**
  * @author Bahman Movaqar [Bahman AT BahmanM.com]
@@ -26,11 +23,11 @@ import static org.ojlang.sysdef.ModelFactory.*
 class TestUtils {
 
   static Systat freshSystat() {
-    OjSystat.create(
-      createMem(),
-      createDict(),
-      createRS(),
-      createPS(),
+    ObjectFactory.createSystat(
+      ObjectFactory.createMem(),
+      ObjectFactory.createDict(),
+      ObjectFactory.createRS(),
+      ObjectFactory.createPS(),
       0,
       0
     )
