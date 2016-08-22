@@ -84,7 +84,7 @@ final public class ObjectFactory {
    * @param sysMemSize system memory size
    * @return a system execution state
    */
-  static public OjSystat
+  static public Systat
   createSystat(
     Mem mem, Dict dict, RS rs, PS ps,
     int xp, int sysMemSize
