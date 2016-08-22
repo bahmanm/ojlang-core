@@ -28,7 +28,9 @@ public class Puts extends AbstractSysWord {
 
   @Override
   public Systat execute(Systat systat) {
-    System.out.print(systat.ps().pop());
+    systat.stdOut().put(
+      String.valueOf(systat.ps().pop())
+    );
     return systat;
   }
 
