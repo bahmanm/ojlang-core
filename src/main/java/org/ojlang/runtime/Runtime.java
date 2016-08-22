@@ -15,15 +15,22 @@
  */
 package org.ojlang.runtime;
 
+import ch.qos.logback.core.util.ExecutorServiceUtil;
 import lombok.Getter;
 import lombok.experimental.Accessors;
 import lombok.val;
 import org.ojlang.ObjectFactory;
+import org.ojlang.runtime.sysio.StdInProducer;
+import org.ojlang.runtime.sysio.StdOutConsumer;
 import org.ojlang.sysdef.SysWord;
 import org.ojlang.sysdef.Systat;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.TimeUnit;
+
+import static org.ojlang.ObjectFactory.*;
 
 /**
  * Oj runtime.
@@ -38,16 +45,42 @@ public class Runtime implements Serializable {
   @Getter
   private Systat systat;
 
+  @Getter
+  private StdInProducer stdInProducer;
+
+  @Getter
+  private StdOutConsumer stdOutConsumer;
+
+  private ExecutorService executorService = ExecutorServiceUtil.newExecutorService();
+
   /**
-   * Private constructor.  Use `init`.
+   * Private constructor.
+   *
+   * @see #initClean() or {@link #initClean(List)}
    */
   private Runtime() {}
 
   /**
+   * Shuts down Oj runtime.  Calling this method is necessary for a graceful
+   * exit of Oj.
+   * <ul>
+   *   <li>STDIN/OUT handlers</li>
+   * </ul>
+   */
+  public void shutdown() {
+    stdOutConsumer.isShutdown(true);
+    stdInProducer.isShutdown(true);
+  }
+
+  /**
    * Initialises a new instance of Oj runtime.
-   * It basically initialises dictionary, return/param stacks with clean states,
-   * puts the XT of system words in memory (starting from 0) and sets the XP to
-   * the first word immediately after system memory.
+   * It <ul>
+   *   <li>initialises dictionary</li>
+   *   <li>return/param stacks with clean states</li>
+   *   <li>puts the XT of system words in memory (starting from 0)</li>
+   *   <li>sets the XP to the first word immediately after system memory</li>
+   *   <li>sets up STDIN and STDOUT</li>
+   * </ul>
    *
    * @see SystemWordsRegistry
    * @param sysWords system words
@@ -60,19 +93,34 @@ public class Runtime implements Serializable {
     assert(sysWords != null);
     val runtime = new Runtime();
     val sysMemsize = sysWords.size();
-    runtime.systat = ObjectFactory.createSystat(
-      ObjectFactory.createMem(),
-      ObjectFactory.createDict(),
-      ObjectFactory.createRS(),
-      ObjectFactory.createPS(),
+    runtime.systat = createSystat(
+      createMem(),
+      createDict(),
+      createRS(),
+      createPS(),
       sysMemsize,
       sysMemsize
     );
+    runtime.stdInProducer = createStdInProducer(runtime.systat.stdIn());
+    runtime.stdOutConsumer = createStdOutConsumer(runtime.systat.stdOut());
+    runtime.executorService.submit(runtime.stdInProducer);
+    runtime.executorService.submit(runtime.stdOutConsumer);
     sysWords.forEach(w -> {
       runtime.systat.dict().put(w);
       runtime.systat.mem().add(w.name());
     });
     return runtime;
+  }
+
+  /**
+   * Calls {@link #initClean(List)} with the value of
+   * S{@link SystemWordsRegistry#words} as the argument.
+   *
+   * @see #initClean(List)
+   */
+  static public Runtime
+  initClean() {
+    return initClean(SystemWordsRegistry.words());
   }
 
 }
