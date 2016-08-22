@@ -18,6 +18,8 @@ package org.ojlang.syswords.io
 import org.junit.Rule
 import org.junit.Test
 import org.junit.contrib.java.lang.system.SystemOutRule
+import org.ojlang.runtime.Runtime
+import org.ojlang.sysdef.Systat
 
 import static org.ojlang.TestUtils.freshSystat
 
@@ -31,11 +33,13 @@ class PutsTest {
 
   @Test
   void execute() throws Exception {
-    def systat = freshSystat()
-    systat.ps().push('Hello, world')
-    new Puts().execute(systat)
+    def runtime = Runtime.initClean()
+    runtime.systat().ps().push('Hello, world')
+    new Puts().execute(runtime.systat())
+    sleep(100)
     assert sysoutRule.log == 'Hello, world'
-    assert systat.ps().size() == 0
+    assert runtime.systat().ps().size() == 0
+    runtime.shutdown()
   }
 
   @Test
