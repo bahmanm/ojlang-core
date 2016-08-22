@@ -15,6 +15,9 @@
  */
 package org.ojlang.sysdef.impls;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.experimental.Accessors;
 import lombok.val;
 import org.ojlang.sysdef.*;
 
@@ -22,15 +25,27 @@ import org.ojlang.sysdef.*;
  * @see Systat
  * @author Bahman Movaqar [Bahman AT BahmanM.com]
  */
+@Accessors(fluent = true, chain = true)
 public class OjSystat implements Systat {
 
   final static private long serialVersionUID = -4885444008905872758L;
 
+  @Getter @Setter
   private Mem mem;
+
+  @Getter @Setter
   private Dict dict;
+
+  @Getter @Setter
   private RS rs;
+
+  @Getter @Setter
   private PS ps;
+
+  @Getter @Setter
   private int xp;
+
+  @Getter @Setter
   private int sysMemSize;
 
   private OjSystat() {}
@@ -59,45 +74,6 @@ public class OjSystat implements Systat {
     result.xp = xp;
     result.sysMemSize = sysMemSize;
     return result;
-  }
-
-  @Override
-  public Mem mem() {
-    return mem;
-  }
-
-  @Override
-  public Dict dict() {
-    return dict;
-  }
-
-  @Override
-  public RS rs() {
-    return rs;
-  }
-
-  @Override
-  public PS ps() {
-    return ps;
-  }
-
-  @Override
-  public int xp() {
-    return xp;
-  }
-
-  @Override
-  public int sysMemSize() {
-    return sysMemSize;
-  }
-
-  @Override
-  public OjSystat
-  xp(
-    int newXp
-  ) {
-    xp = newXp;
-    return this;
   }
 
 }
