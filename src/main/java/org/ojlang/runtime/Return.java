@@ -15,6 +15,8 @@
  */
 package org.ojlang.runtime;
 
+import java.io.Serializable;
+
 /**
  * This has a special meaning to Executor; whenever the XP points to a memory cell
  * which contains a Return instance, the Executor understands that it should pop
@@ -22,7 +24,9 @@ package org.ojlang.runtime;
  *
  * @author Bahman Movaqar [Bahman AT BahmanM.com]
  */
-final public class Return {
+final public class Return implements Serializable {
+
+  final static private long serialVersionUID = -8604020529139621449L;
 
   static final private Return instance = new Return();
 
