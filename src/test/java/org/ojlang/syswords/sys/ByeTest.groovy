@@ -15,9 +15,12 @@
  */
 package org.ojlang.syswords.sys
 
+import org.junit.After
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.contrib.java.lang.system.ExpectedSystemExit
+import org.ojlang.runtime.Runtime
 
 import static org.ojlang.TestUtils.freshSystat
 
@@ -28,6 +31,18 @@ class ByeTest {
 
   @Rule
   public ExpectedSystemExit exitRule = ExpectedSystemExit.none()
+
+  Runtime runtime
+
+  @Before
+  void initRuntime() {
+    runtime = Runtime.initClean()
+  }
+
+  @After
+  void shutdownRuntime() {
+    runtime.shutdown()
+  }
 
   @Test
   void execute() throws Exception {

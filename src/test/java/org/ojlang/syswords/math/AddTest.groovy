@@ -15,22 +15,34 @@
  */
 package org.ojlang.syswords.math
 
+import org.junit.After
+import org.junit.Before
 import org.junit.Test
-
-import static org.ojlang.TestUtils.freshSystat
+import org.ojlang.runtime.Runtime
 
 /**
  * @author Bahman Movaqar [Bahman AT BahmanM.com]
  */
 class AddTest {
 
+  Runtime runtime
+
+  @Before
+  void initRuntime() {
+    runtime = Runtime.initClean()
+  }
+
+  @After
+  void shutdownRuntime() {
+    runtime.shutdown()
+  }
+
   @Test
   void execute() {
-    def systat = freshSystat()
-    systat.ps().push(8 as Integer)
-    systat.ps().push(9 as Integer)
+    runtime.systat.ps().push(8 as Integer)
+    runtime.systat.ps().push(9 as Integer)
     def w = new Add()
-    def result = w.execute(systat)
+    def result = w.execute(runtime.systat())
     assert result.ps().size() == 1
     assert result.ps().peek() == 17
   }

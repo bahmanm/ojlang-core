@@ -15,12 +15,14 @@
  */
 package org.ojlang.runtime
 
+import org.junit.After
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.contrib.java.lang.system.ExpectedSystemExit
 import org.junit.contrib.java.lang.system.SystemOutRule
-import org.ojlang.sysdef.impls.WordImpl
 import org.ojlang.sysdef.Xt
+import org.ojlang.sysdef.impls.WordImpl
 
 import static org.junit.Assert.fail
 
@@ -35,6 +37,18 @@ class ExecutorTest {
   @Rule
   public ExpectedSystemExit sysexitRule = ExpectedSystemExit.none()
 
+  Runtime runtime
+
+  @Before
+  void initRuntime() {
+    runtime = Runtime.initClean()
+  }
+
+  @After
+  void shutdownRuntime() {
+    runtime.shutdown()
+  }
+
   @Test
   void testRun_puts_bye() {
     sysexitRule.expectSystemExitWithStatus(0)
@@ -43,16 +57,17 @@ class ExecutorTest {
   }
 
   def systat_puts_bye() {
-    def systat = Runtime.initClean(SystemWordsRegistry.words()).systat()
-    systat.mem().add(
-      sysWordXt('PUTS')
-    )
-    systat.mem().add(
-      sysWordXt('BYE')
-    )
-    systat.ps().push('Hello, world')
-    systat.xp(systat.sysMemSize())
-    systat
+    runtime.systat().with {
+      mem().add(
+        sysWordXt('PUTS')
+      )
+      mem().add(
+        sysWordXt('BYE')
+      )
+      ps().push('Hello, world')
+      xp(runtime.systat().sysMemSize())
+    }
+    runtime.systat()
   }
 
   @Test
@@ -60,28 +75,30 @@ class ExecutorTest {
     sysexitRule.expectSystemExitWithStatus(0)
     Executor.run(systat_add_puts_bye())
     sysoutRule.log == '10 + 20 = 30'
+    runtime.shutdown()
   }
 
   def systat_add_puts_bye() {
-    def systat = Runtime.initClean(SystemWordsRegistry.words()).systat()
-    systat.mem().add(
-      sysWordXt('PUTS')
-    )
-    systat.mem().add(
-      sysWordXt('ADD')
-    )
-    systat.mem().add(
-      sysWordXt('PUTS')
-    )
-    systat.mem().add(
-      sysWordXt('BYE')
-    )
-    systat.ps()
-      .push(10)
-      .push(20)
-      .push('10 + 20 = ')
-    systat.xp(systat.sysMemSize())
-    systat
+    runtime.systat().with {
+      mem().add(
+        sysWordXt('PUTS')
+      )
+      mem().add(
+        sysWordXt('ADD')
+      )
+      mem().add(
+        sysWordXt('PUTS')
+      )
+      mem().add(
+        sysWordXt('BYE')
+      )
+      ps()
+        .push(10)
+        .push(20)
+        .push('10 + 20 = ')
+      xp(sysMemSize())
+    }
+    runtime.systat()
   }
 
   @Test
@@ -93,41 +110,42 @@ class ExecutorTest {
 
   def systat_user_word_bye() {
     def myWordXt = new Xt(SystemWordsRegistry.words().size() + 4)
-    def systat = Runtime.initClean(SystemWordsRegistry.words()).systat()
-    systat.dict().put(
-      WordImpl.create('MY-WORD', myWordXt)
-    )
+    runtime.systat().with {
+      dict().put(
+        WordImpl.create('MY-WORD', myWordXt)
+      )
 
-    systat.mem().add(
-      10
-    )
-    systat.mem().add(
-      20
-    )
-    systat.mem().add(
-      myWordXt
-    )
-    systat.mem().add(
-      sysWordXt('BYE')
-    )
-    // MY-WORD
-    systat.mem().add(
-      'Result =  '
-    )
-    systat.mem().add(
-      sysWordXt('PUTS')
-    )
-    systat.mem().add(
-      sysWordXt('ADD')
-    )
-    systat.mem().add(
-      sysWordXt('PUTS')
-    )
-    systat.mem().add(
-      Return.instance
-    )
-    systat.xp(systat.sysMemSize())
-    systat
+      mem().add(
+        10
+      )
+      mem().add(
+        20
+      )
+      mem().add(
+        myWordXt
+      )
+      mem().add(
+        sysWordXt('BYE')
+      )
+      // MY-WORD
+      mem().add(
+        'Result =  '
+      )
+      mem().add(
+        sysWordXt('PUTS')
+      )
+      mem().add(
+        sysWordXt('ADD')
+      )
+      mem().add(
+        sysWordXt('PUTS')
+      )
+      mem().add(
+        Return.instance
+      )
+      xp(sysMemSize())
+    }
+    runtime.systat()
   }
 
   @Test
@@ -139,44 +157,45 @@ class ExecutorTest {
 
   def systat_user_word_user_word_bye() {
     def myWordXt = new Xt(SystemWordsRegistry.words().size() + 5)
-    def systat = Runtime.initClean(SystemWordsRegistry.words()).systat()
-    systat.dict().put(
-      WordImpl.create('MY-WORD', myWordXt)
-    )
+    runtime.systat().with {
+      dict().put(
+        WordImpl.create('MY-WORD', myWordXt)
+      )
 
-    systat.mem().add(
-      10
-    )
-    systat.mem().add(
-      myWordXt
-    )
-    systat.mem().add(
-      myWordXt
-    )
-    systat.mem().add(
-      sysWordXt('PUTS')
-    )
-    systat.mem().add(
-      sysWordXt('BYE')
-    )
-    // MY-WORD
-    systat.mem().add(
-      'INSIDE '
-    )
-    systat.mem().add(
-      sysWordXt('PUTS')
-    )
-    systat.mem().add(
-      1
-    )
-    systat.mem().add(
-      sysWordXt('ADD')
-    )
-    systat.mem().add(
-      Return.instance
-    )
-    systat.xp(systat.sysMemSize())
-    systat
+      mem().add(
+        10
+      )
+      mem().add(
+        myWordXt
+      )
+      mem().add(
+        myWordXt
+      )
+      mem().add(
+        sysWordXt('PUTS')
+      )
+      mem().add(
+        sysWordXt('BYE')
+      )
+      // MY-WORD
+      mem().add(
+        'INSIDE '
+      )
+      mem().add(
+        sysWordXt('PUTS')
+      )
+      mem().add(
+        1
+      )
+      mem().add(
+        sysWordXt('ADD')
+      )
+      mem().add(
+        Return.instance
+      )
+      xp(sysMemSize())
+    }
+    runtime.systat()
   }
 
   @Test
@@ -191,19 +210,20 @@ class ExecutorTest {
   }
 
   def systat_null_puts_bye() {
-    def systat = Runtime.initClean(SystemWordsRegistry.words()).systat()
-    systat.mem().add(
-      null
-    )
-    systat.mem().add(
-      sysWordXt('ADD')
-    )
-    systat.mem().add(
-      sysWordXt('BYE')
-    )
-    systat.ps().push(1)
-    systat.xp(systat.sysMemSize())
-    systat
+    runtime.systat().with {
+      mem().add(
+        null
+      )
+      mem().add(
+        sysWordXt('ADD')
+      )
+      mem().add(
+        sysWordXt('BYE')
+      )
+      ps().push(1)
+      xp(sysMemSize())
+    }
+    runtime.systat()
   }
 
   def sysWordXt(String name) {

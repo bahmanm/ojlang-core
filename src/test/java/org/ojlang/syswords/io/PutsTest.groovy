@@ -15,13 +15,12 @@
  */
 package org.ojlang.syswords.io
 
+import org.junit.After
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.contrib.java.lang.system.SystemOutRule
 import org.ojlang.runtime.Runtime
-import org.ojlang.sysdef.Systat
-
-import static org.ojlang.TestUtils.freshSystat
 
 /**
  * @author Bahman Movaqar [Bahman AT BahmanM.com]
@@ -31,15 +30,25 @@ class PutsTest {
   @Rule
   public SystemOutRule sysoutRule = new SystemOutRule().enableLog()
 
+  Runtime runtime
+
+  @Before
+  void initRuntime() {
+    runtime = Runtime.initClean()
+  }
+
+  @After
+  void shutdownRuntime() {
+    runtime.shutdown()
+  }
+
   @Test
   void execute() throws Exception {
-    def runtime = Runtime.initClean()
     runtime.systat().ps().push('Hello, world')
     new Puts().execute(runtime.systat())
     sleep(100)
     assert sysoutRule.log == 'Hello, world'
     assert runtime.systat().ps().size() == 0
-    runtime.shutdown()
   }
 
   @Test
