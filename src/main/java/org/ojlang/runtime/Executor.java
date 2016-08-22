@@ -19,12 +19,16 @@ import org.ojlang.sysdef.Xt;
 import org.ojlang.sysdef.Systat;
 import org.ojlang.sysdef.SysWord;
 
+import java.io.Serializable;
+
 /**
  * The executor infinite loop.
  *
  * @author Bahman Movaqar [Bahman AT BahmanM.com]
  */
-public class Executor {
+public class Executor implements Serializable {
+
+  final static private long serialVersionUID = -5686366222056189518L;
 
   static public void
   run(
