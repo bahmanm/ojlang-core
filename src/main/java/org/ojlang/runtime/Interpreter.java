@@ -13,9 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.ojlang.syswords;
+package org.ojlang.runtime;
 
 import org.ojlang.sysdef.Systat;
+import org.ojlang.syswords.AbstractSysWord;
 
 /**
  * Interpreter word.
