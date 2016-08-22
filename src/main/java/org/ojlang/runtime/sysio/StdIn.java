@@ -37,7 +37,8 @@ public interface StdIn {
   String get();
 
   /**
-   * Adds a given chunk of data to be later "consumed" (i.e. "get").
+   * Adds a given chunk of data to be later "consumed" (i.e. "get").  Depending
+   * on the impl, it may or may not block.
    *
    * @param chunk the given chunk of data
    */
