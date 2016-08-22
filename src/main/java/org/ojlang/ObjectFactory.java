@@ -20,6 +20,8 @@ import org.ojlang.runtime.sysio.StdIn;
 import org.ojlang.runtime.sysio.StdInProducer;
 import org.ojlang.runtime.sysio.StdOut;
 import org.ojlang.runtime.sysio.StdOutConsumer;
+import org.ojlang.runtime.sysio.impls.BlockingStdIn;
+import org.ojlang.runtime.sysio.impls.BlockingStdOut;
 import org.ojlang.runtime.sysio.impls.ConsoleStdInProducer;
 import org.ojlang.runtime.sysio.impls.ConsoleStdOutConsumer;
 import org.ojlang.sysdef.*;
@@ -105,6 +107,38 @@ final public class ObjectFactory {
   }
 
   /**
+   * Creates a new STDIN.
+   *
+   * @return a new STDIN
+   */
+  static public StdIn
+  createStdIn() {
+    return new BlockingStdIn();
+  }
+
+  /**
+   * Creates a new STDOUT.
+   *
+   * @return a new STDOUT
+   */
+  static public StdOut
+  createStdOut() {
+    return new BlockingStdOut();
+  }
+
+  /**
+   * Creates a STDIN producer with the default STDIN.
+   *
+   * @return a STDIN producer
+   */
+  static public StdInProducer
+  createStdInProducer() {
+    val result = new ConsoleStdInProducer();
+    result.setStdIn(createStdIn());
+    return result;
+  }
+
+  /**
    * Creates a STDIN producer.
    *
    * @param stdin STDIN
@@ -116,6 +150,18 @@ final public class ObjectFactory {
   ) {
     val result = new ConsoleStdInProducer();
     result.setStdIn(stdin);
+    return result;
+  }
+
+  /**
+   * Creates a STDOUT consumer with the default STDOUT.
+   *
+   * @return a STDOUT consumer
+   */
+  static public StdOutConsumer
+  createStdOutConsumer() {
+    val result = new ConsoleStdOutConsumer();
+    result.setStdOut(createStdOut());
     return result;
   }
 
