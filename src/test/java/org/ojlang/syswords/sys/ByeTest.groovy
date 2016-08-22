@@ -47,7 +47,7 @@ class ByeTest {
   @Test
   void execute() throws Exception {
     exitRule.expectSystemExitWithStatus(0)
-    new Bye().execute(freshSystat())
+    new Bye().execute(runtime.systat())
   }
 
   @Test
