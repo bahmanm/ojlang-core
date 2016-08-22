@@ -13,27 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.ojlang
-
-import org.ojlang.sysdef.impls.OjSystat
-import org.ojlang.sysdef.Systat
-
-import static org.ojlang.sysdef.ModelFactory.*
+package org.ojlang.sysdef;
 
 /**
+ * Oj return stack.
+ *
+ * @see Stack
  * @author Bahman Movaqar [Bahman AT BahmanM.com]
  */
-class TestUtils {
-
-  static Systat freshSystat() {
-    OjSystat.create(
-      createMem(),
-      createDict(),
-      createRS(),
-      createPS(),
-      0,
-      0
-    )
-  }
-
+public interface RS extends Stack<Integer> {
 }

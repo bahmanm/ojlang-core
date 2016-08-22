@@ -13,27 +13,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.ojlang
+package org.ojlang.sysdef;
 
-import org.ojlang.sysdef.impls.OjSystat
-import org.ojlang.sysdef.Systat
+import lombok.Getter;
+import lombok.experimental.Accessors;
 
-import static org.ojlang.sysdef.ModelFactory.*
+import java.io.Serializable;
 
 /**
+ * Represents an execution token (e.g. a memory address to jump to).
+ * Though this class is a simple wrapper for an `int`, wihtout it the
+ * interpreter/executor couldn't tell if an `int` in memory is simply a number
+ * to push to PS or is a memory address to jump to.
+ *
  * @author Bahman Movaqar [Bahman AT BahmanM.com]
  */
-class TestUtils {
+@Accessors(fluent = true)
+public class Xt implements Serializable {
 
-  static Systat freshSystat() {
-    OjSystat.create(
-      createMem(),
-      createDict(),
-      createRS(),
-      createPS(),
-      0,
-      0
-    )
+  final static private long serialVersionUID = 41600880904248460L;
+
+  @Getter
+  private int value;
+
+  public Xt(int value) {
+    this.value = value;
   }
 
 }

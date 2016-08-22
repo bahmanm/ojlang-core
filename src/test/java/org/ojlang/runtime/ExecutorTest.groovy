@@ -15,13 +15,12 @@
  */
 package org.ojlang.runtime
 
-import org.junit.Assert
 import org.junit.Rule
 import org.junit.Test
 import org.junit.contrib.java.lang.system.ExpectedSystemExit
 import org.junit.contrib.java.lang.system.SystemOutRule
-import org.ojlang.models.WordImpl
-import org.ojlang.models.Xt
+import org.ojlang.sysdef.impls.WordImpl
+import org.ojlang.sysdef.Xt
 
 import static org.junit.Assert.fail
 

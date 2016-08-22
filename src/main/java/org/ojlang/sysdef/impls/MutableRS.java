@@ -13,27 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.ojlang
+package org.ojlang.sysdef.impls;
 
-import org.ojlang.sysdef.impls.OjSystat
-import org.ojlang.sysdef.Systat
-
-import static org.ojlang.sysdef.ModelFactory.*
+import org.ojlang.sysdef.RS;
 
 /**
+ * Oj return stack.
+ *
+ * @see RS
  * @author Bahman Movaqar [Bahman AT BahmanM.com]
  */
-class TestUtils {
+public class MutableRS extends MutableArrayStack<Integer> implements RS {
 
-  static Systat freshSystat() {
-    OjSystat.create(
-      createMem(),
-      createDict(),
-      createRS(),
-      createPS(),
-      0,
-      0
-    )
-  }
+  final static private long serialVersionUID = -9044284763242681153L;
 
 }

@@ -13,27 +13,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.ojlang
-
-import org.ojlang.sysdef.impls.OjSystat
-import org.ojlang.sysdef.Systat
-
-import static org.ojlang.sysdef.ModelFactory.*
+package org.ojlang.sysdef;
 
 /**
+ * A system word.
+ * A word which is implemented in Java (or any other JVM language). A system
+ * word must be registered in Oj runtime in order to be used.
+ *
+ * @see org.ojlang.runtime.SystemWordsRegistry
  * @author Bahman Movaqar [Bahman AT BahmanM.com]
  */
-class TestUtils {
+public interface SysWord extends Word {
 
-  static Systat freshSystat() {
-    OjSystat.create(
-      createMem(),
-      createDict(),
-      createRS(),
-      createPS(),
-      0,
-      0
-    )
+  @Override
+  default boolean isSystemWord() {
+    return true;
   }
+
+  /**
+   * Executes the word mutating the system state.
+   *
+   * @param systat the snapshot of the system state before execution
+   */
+  Systat execute(
+    Systat systat
+  );
 
 }

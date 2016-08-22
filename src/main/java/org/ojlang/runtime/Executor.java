@@ -15,9 +15,9 @@
  */
 package org.ojlang.runtime;
 
-import org.ojlang.models.Xt;
-import org.ojlang.models.contracts.Systat;
-import org.ojlang.models.contracts.SysWord;
+import org.ojlang.sysdef.Xt;
+import org.ojlang.sysdef.Systat;
+import org.ojlang.sysdef.SysWord;
 
 /**
  * The executor infinite loop.

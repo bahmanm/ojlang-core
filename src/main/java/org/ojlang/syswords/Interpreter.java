@@ -13,27 +13,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.ojlang
+package org.ojlang.syswords;
 
-import org.ojlang.sysdef.impls.OjSystat
-import org.ojlang.sysdef.Systat
-
-import static org.ojlang.sysdef.ModelFactory.*
+import org.ojlang.sysdef.Systat;
 
 /**
+ * Interpreter word.
+ *
  * @author Bahman Movaqar [Bahman AT BahmanM.com]
  */
-class TestUtils {
+public class Interpreter extends AbstractSysWord {
 
-  static Systat freshSystat() {
-    OjSystat.create(
-      createMem(),
-      createDict(),
-      createRS(),
-      createPS(),
-      0,
-      0
-    )
+  final static private long serialVersionUID = -1299211002338774173L;
+
+  @Override
+  public Systat
+  execute(
+    Systat systat
+  ) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public String name() {
+    return "INTERPRETER";
   }
 
 }

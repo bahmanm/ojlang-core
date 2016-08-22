@@ -13,27 +13,41 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.ojlang
+package org.ojlang.syswords;
 
-import org.ojlang.sysdef.impls.OjSystat
-import org.ojlang.sysdef.Systat
-
-import static org.ojlang.sysdef.ModelFactory.*
+import org.ojlang.sysdef.Xt;
+import org.ojlang.sysdef.SysWord;
+import org.ojlang.sysdef.Word;
 
 /**
  * @author Bahman Movaqar [Bahman AT BahmanM.com]
  */
-class TestUtils {
+abstract public class AbstractSysWord implements SysWord {
 
-  static Systat freshSystat() {
-    OjSystat.create(
-      createMem(),
-      createDict(),
-      createRS(),
-      createPS(),
-      0,
-      0
-    )
+  @Override
+  public int
+  popXt() {
+    throw new RuntimeException("Illegal operation on a system word");
+  }
+
+  @Override
+  public int
+  xt() {
+    throw new RuntimeException("Illegal operation on a system word");
+  }
+
+  @Override
+  public Word
+  pushXt(
+    Xt addr
+  ) {
+    throw new RuntimeException("Illegal operation on a system word");
+  }
+
+  @Override
+  final public boolean
+  isSystemWord() {
+    return false;
   }
 
 }

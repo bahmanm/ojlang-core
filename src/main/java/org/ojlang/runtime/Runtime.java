@@ -18,14 +18,14 @@ package org.ojlang.runtime;
 import lombok.Getter;
 import lombok.experimental.Accessors;
 import lombok.val;
-import org.ojlang.models.OjSystat;
-import org.ojlang.models.contracts.Systat;
-import org.ojlang.models.contracts.SysWord;
+import org.ojlang.sysdef.impls.OjSystat;
+import org.ojlang.sysdef.Systat;
+import org.ojlang.sysdef.SysWord;
 
 import java.io.Serializable;
 import java.util.List;
 
-import static org.ojlang.models.ModelFactory.*;
+import static org.ojlang.sysdef.ModelFactory.*;
 
 /**
  * Oj runtime.

@@ -13,27 +13,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.ojlang
+package org.ojlang.syswords.sys
 
-import org.ojlang.sysdef.impls.OjSystat
-import org.ojlang.sysdef.Systat
+import org.junit.Rule
+import org.junit.Test
+import org.junit.contrib.java.lang.system.ExpectedSystemExit
 
-import static org.ojlang.sysdef.ModelFactory.*
+import static org.ojlang.TestUtils.freshSystat
 
 /**
  * @author Bahman Movaqar [Bahman AT BahmanM.com]
  */
-class TestUtils {
+class ByeTest {
 
-  static Systat freshSystat() {
-    OjSystat.create(
-      createMem(),
-      createDict(),
-      createRS(),
-      createPS(),
-      0,
-      0
-    )
+  @Rule
+  public ExpectedSystemExit exitRule = ExpectedSystemExit.none()
+
+  @Test
+  void execute() throws Exception {
+    exitRule.expectSystemExitWithStatus(0)
+    new Bye().execute(freshSystat())
+  }
+
+  @Test
+  void name() throws Exception {
+    assert new Bye().name() == 'BYE'
   }
 
 }

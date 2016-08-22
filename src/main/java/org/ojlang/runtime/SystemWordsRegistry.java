@@ -18,11 +18,11 @@ package org.ojlang.runtime;
 import lombok.Getter;
 import lombok.experimental.Accessors;
 import org.eclipse.collections.impl.list.mutable.FastList;
-import org.ojlang.models.contracts.SysWord;
-import org.ojlang.models.syswords.Interpreter;
-import org.ojlang.models.syswords.io.Puts;
-import org.ojlang.models.syswords.math.Add;
-import org.ojlang.models.syswords.sys.Bye;
+import org.ojlang.sysdef.SysWord;
+import org.ojlang.syswords.Interpreter;
+import org.ojlang.syswords.io.Puts;
+import org.ojlang.syswords.math.Add;
+import org.ojlang.syswords.sys.Bye;
 
 import java.io.Serializable;
 

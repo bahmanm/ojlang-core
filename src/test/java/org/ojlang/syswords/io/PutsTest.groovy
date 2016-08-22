@@ -13,27 +13,34 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.ojlang
+package org.ojlang.syswords.io
 
-import org.ojlang.sysdef.impls.OjSystat
-import org.ojlang.sysdef.Systat
+import org.junit.Rule
+import org.junit.Test
+import org.junit.contrib.java.lang.system.SystemOutRule
 
-import static org.ojlang.sysdef.ModelFactory.*
+import static org.ojlang.TestUtils.freshSystat
 
 /**
  * @author Bahman Movaqar [Bahman AT BahmanM.com]
  */
-class TestUtils {
+class PutsTest {
 
-  static Systat freshSystat() {
-    OjSystat.create(
-      createMem(),
-      createDict(),
-      createRS(),
-      createPS(),
-      0,
-      0
-    )
+  @Rule
+  public SystemOutRule sysoutRule = new SystemOutRule().enableLog()
+
+  @Test
+  void execute() throws Exception {
+    def systat = freshSystat()
+    systat.ps().push('Hello, world')
+    new Puts().execute(systat)
+    assert sysoutRule.log == 'Hello, world'
+    assert systat.ps().size() == 0
+  }
+
+  @Test
+  void name() throws Exception {
+    assert new Puts().name() == 'PUTS'
   }
 
 }

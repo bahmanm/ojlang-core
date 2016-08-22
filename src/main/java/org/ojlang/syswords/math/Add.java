@@ -13,27 +13,33 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.ojlang
+package org.ojlang.syswords.math;
 
-import org.ojlang.sysdef.impls.OjSystat
-import org.ojlang.sysdef.Systat
-
-import static org.ojlang.sysdef.ModelFactory.*
+import lombok.val;
+import org.ojlang.sysdef.Systat;
+import org.ojlang.syswords.AbstractSysWord;
 
 /**
+ * ( n1 n2 -- n3 )
+ * Arithmetic "plus" operation.
+ *
+ * Consumes two elements from the stack and produces the result of addition back
+ * into the stack.
  * @author Bahman Movaqar [Bahman AT BahmanM.com]
  */
-class TestUtils {
+public class Add extends AbstractSysWord {
 
-  static Systat freshSystat() {
-    OjSystat.create(
-      createMem(),
-      createDict(),
-      createRS(),
-      createPS(),
-      0,
-      0
-    )
+  @Override
+  public Systat execute(Systat systat) {
+    val op1 = (Integer)systat.ps().pop();
+    val op2 = (Integer)systat.ps().pop();
+    systat.ps().push(op1 + op2);
+    return systat;
+  }
+
+  @Override
+  public String name() {
+    return "ADD";
   }
 
 }

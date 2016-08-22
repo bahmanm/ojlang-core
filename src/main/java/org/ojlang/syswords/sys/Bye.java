@@ -13,27 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.ojlang
+package org.ojlang.syswords.sys;
 
-import org.ojlang.sysdef.impls.OjSystat
-import org.ojlang.sysdef.Systat
-
-import static org.ojlang.sysdef.ModelFactory.*
+import org.ojlang.sysdef.Systat;
+import org.ojlang.syswords.AbstractSysWord;
 
 /**
+ * ( -- )
+ * Quits Oj and shuts down the JVM with code 0.
+ *
  * @author Bahman Movaqar [Bahman AT BahmanM.com]
  */
-class TestUtils {
+public class Bye extends AbstractSysWord {
 
-  static Systat freshSystat() {
-    OjSystat.create(
-      createMem(),
-      createDict(),
-      createRS(),
-      createPS(),
-      0,
-      0
-    )
+  @Override
+  public Systat execute(Systat systat) {
+    System.exit(0);
+    return systat;
+  }
+
+  @Override
+  public String name() {
+    return "BYE";
   }
 
 }

@@ -13,27 +13,33 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.ojlang
+package org.ojlang.sysdef;
 
-import org.ojlang.sysdef.impls.OjSystat
-import org.ojlang.sysdef.Systat
-
-import static org.ojlang.sysdef.ModelFactory.*
+import java.io.Serializable;
 
 /**
+ * Oj dictionary; a mapping of names to words.
+ *
+ * @see Word
  * @author Bahman Movaqar [Bahman AT BahmanM.com]
  */
-class TestUtils {
+public interface Dict extends Serializable {
 
-  static Systat freshSystat() {
-    OjSystat.create(
-      createMem(),
-      createDict(),
-      createRS(),
-      createPS(),
-      0,
-      0
-    )
-  }
+  /**
+   * Retrieves a word by its name.
+   *
+   * @param name the input name
+   * @return the word; should throw a runtime exception if no such word exists.
+   */
+  Word get(String name);
+
+  /**
+   * Puts a word into the dictionary.
+   * Uses the name of the word as the dictionary key.
+   *
+   * @param word the input word
+   * @return the modified dictionary.
+   */
+  Dict put(Word word);
 
 }
