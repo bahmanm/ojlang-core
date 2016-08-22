@@ -16,6 +16,12 @@
 package org.ojlang;
 
 import lombok.val;
+import org.ojlang.runtime.sysio.StdIn;
+import org.ojlang.runtime.sysio.StdInProducer;
+import org.ojlang.runtime.sysio.StdOut;
+import org.ojlang.runtime.sysio.StdOutConsumer;
+import org.ojlang.runtime.sysio.impls.ConsoleStdInProducer;
+import org.ojlang.runtime.sysio.impls.ConsoleStdOutConsumer;
 import org.ojlang.sysdef.*;
 import org.ojlang.sysdef.impls.*;
 
@@ -95,6 +101,36 @@ final public class ObjectFactory {
     result.rs(rs);
     result.xp(xp);
     result.sysMemSize(sysMemSize);
+    return result;
+  }
+
+  /**
+   * Creates a STDIN producer.
+   *
+   * @param stdin STDIN
+   * @return a STDIN producer
+   */
+  static public StdInProducer
+  createStdInProducer(
+    StdIn stdin
+  ) {
+    val result = new ConsoleStdInProducer();
+    result.setStdIn(stdin);
+    return result;
+  }
+
+  /**
+   * Creates a STDOUT consumer.
+   *
+   * @param stdout STDOUT
+   * @return a STDOUT consumer
+   */
+  static public StdOutConsumer
+  createStdOutConsumer(
+    StdOut stdout
+  ) {
+    val result = new ConsoleStdOutConsumer();
+    result.setStdOut(stdout);
     return result;
   }
 
