@@ -22,6 +22,8 @@ package org.ojlang.runtime.sysio;
  */
 public interface StdOutConsumer extends Runnable {
 
-  StdOutConsumer setStdOut(StdOut stdout);
+  StdOutConsumer stdOut(StdOut stdout);
+
+  void isShutdown(boolean isShutdown);
 
 }

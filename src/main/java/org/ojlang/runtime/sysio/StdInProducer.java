@@ -22,6 +22,8 @@ package org.ojlang.runtime.sysio;
  */
 public interface StdInProducer extends Runnable {
 
-  StdInProducer setStdIn(StdIn stdin);
+  StdInProducer stdIn(StdIn stdin);
+
+  void isShutdown(boolean isShutdown);
 
 }
