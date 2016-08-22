@@ -47,7 +47,7 @@ public class PollingStdOut implements StdOut, Serializable {
    * Creates a new instance with the default capacity (i.e. 1000).
    */
   public PollingStdOut() {
-    data = new ArrayBlockingQueue<>(DEFAULT_CAPACITY);
+    this(DEFAULT_CAPACITY);
   }
 
   /**

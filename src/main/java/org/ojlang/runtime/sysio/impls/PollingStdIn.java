@@ -47,7 +47,7 @@ public class PollingStdIn implements StdIn, Serializable {
    * Creates a new instance with the default capacity (i.e. 1000).
    */
   public PollingStdIn() {
-    data = new ArrayBlockingQueue<>(DEFAULT_CAPACITY);
+    this(DEFAULT_CAPACITY);
   }
 
   /**
