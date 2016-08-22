@@ -16,6 +16,8 @@
 package org.ojlang.sysdef.impls;
 
 import lombok.val;
+import org.ojlang.ObjectFactory;
+import org.ojlang.sysdef.Stack;
 import org.ojlang.sysdef.Xt;
 import org.ojlang.sysdef.Word;
 
@@ -30,20 +32,20 @@ public class WordImpl implements Word {
   final static private long serialVersionUID = 350197946204676041L;
 
   private String name;
-  final private MutableArrayStack<Xt> memAddresses = new MutableArrayStack<Xt>();
+  final private Stack<Xt> xts = ObjectFactory.createStack();
 
   private WordImpl() {}
 
   @Override
   public int
   popXt() {
-    return memAddresses.pop().value();
+    return xts.pop().value();
   }
 
   @Override
   public int
   xt() {
-    return memAddresses.peek().value();
+    return xts.peek().value();
   }
 
   @Override
@@ -51,7 +53,7 @@ public class WordImpl implements Word {
   pushXt(
     Xt addr
   ) {
-    memAddresses.push(addr);
+    xts.push(addr);
     return this;
   }
 
