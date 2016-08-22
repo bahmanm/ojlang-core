@@ -15,16 +15,16 @@
  */
 package org.ojlang.models;
 
-import org.ojlang.models.contracts.ReturnStack;
+import org.ojlang.models.contracts.PS;
 
 /**
- * Oj return stack.
+ * Oj parameter stack.
  *
- * @see ReturnStack
+ * @see PS
  * @author Bahman Movaqar [Bahman AT BahmanM.com]
  */
-public class ReturnStackImpl extends StackImpl<Integer> implements ReturnStack {
+public class MutablePS extends MutableArrayStack<Object> implements PS {
 
-  final static private long serialVersionUID = -9044284763242681153L;
+  final static private long serialVersionUID = 7420251743658760712L;
 
 }

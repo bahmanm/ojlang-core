@@ -15,16 +15,16 @@
  */
 package org.ojlang.models;
 
-import org.ojlang.models.contracts.ParamStack;
+import org.ojlang.models.contracts.RS;
 
 /**
- * Oj parameter stack.
+ * Oj return stack.
  *
- * @see ParamStack
+ * @see RS
  * @author Bahman Movaqar [Bahman AT BahmanM.com]
  */
-public class ParamStackImpl extends StackImpl<Object> implements ParamStack {
+public class MutableRS extends MutableArrayStack<Integer> implements RS {
 
-  final static private long serialVersionUID = 7420251743658760712L;
+  final static private long serialVersionUID = -9044284763242681153L;
 
 }

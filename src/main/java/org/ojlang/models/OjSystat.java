@@ -19,21 +19,21 @@ import lombok.val;
 import org.ojlang.models.contracts.*;
 
 /**
- * @see SystemState
+ * @see Systat
  * @author Bahman Movaqar [Bahman AT BahmanM.com]
  */
-public class SystemStateImpl implements SystemState {
+public class OjSystat implements Systat {
 
   final static private long serialVersionUID = -4885444008905872758L;
 
-  private Memory mem;
-  private Dictionary dict;
-  private ReturnStack rs;
-  private ParamStack ps;
+  private Mem mem;
+  private Dict dict;
+  private RS rs;
+  private PS ps;
   private int xp;
   private int sysMemSize;
 
-  private SystemStateImpl() {}
+  private OjSystat() {}
 
   /**
    * Creates a system execution state.
@@ -46,12 +46,12 @@ public class SystemStateImpl implements SystemState {
    * @param sysMemSize system memory size
    * @return a system execution state
    */
-  static public SystemStateImpl
+  static public OjSystat
   create(
-    Memory mem, Dictionary dict, ReturnStack rs, ParamStack ps,
+    Mem mem, Dict dict, RS rs, PS ps,
     int xp, int sysMemSize
   ) {
-    val result = new SystemStateImpl();
+    val result = new OjSystat();
     result.mem = mem;
     result.dict = dict;
     result.ps = ps;
@@ -62,22 +62,22 @@ public class SystemStateImpl implements SystemState {
   }
 
   @Override
-  public Memory mem() {
+  public Mem mem() {
     return mem;
   }
 
   @Override
-  public Dictionary dict() {
+  public Dict dict() {
     return dict;
   }
 
   @Override
-  public ReturnStack rs() {
+  public RS rs() {
     return rs;
   }
 
   @Override
-  public ParamStack ps() {
+  public PS ps() {
     return ps;
   }
 
@@ -92,7 +92,7 @@ public class SystemStateImpl implements SystemState {
   }
 
   @Override
-  public SystemStateImpl
+  public OjSystat
   xp(
     int newXp
   ) {

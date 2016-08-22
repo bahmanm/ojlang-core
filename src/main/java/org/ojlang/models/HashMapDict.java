@@ -18,16 +18,16 @@ package org.ojlang.models;
 import org.eclipse.collections.api.map.MutableMap;
 import org.eclipse.collections.impl.map.mutable.ConcurrentHashMap;
 import org.ojlang.exceptions.WordNotFoundException;
-import org.ojlang.models.contracts.Dictionary;
+import org.ojlang.models.contracts.Dict;
 import org.ojlang.models.contracts.Word;
 
 /**
- * Dictionary implementation based on a map.
+ * Dict implementation based on a map.
  *
- * @see Dictionary
+ * @see Dict
  * @author Bahman Movaqar [Bahman AT BahmanM.com]
  */
-public class DictionaryImpl implements Dictionary {
+public class HashMapDict implements Dict {
 
   final static private long serialVersionUID = 6251354072851968198L;
 
@@ -45,7 +45,7 @@ public class DictionaryImpl implements Dictionary {
   }
 
   @Override
-  public Dictionary put(
+  public Dict put(
     Word word
   ) {
     assert(word != null);

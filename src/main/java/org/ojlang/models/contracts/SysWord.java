@@ -23,7 +23,7 @@ package org.ojlang.models.contracts;
  * @see org.ojlang.runtime.SystemWordsRegistry
  * @author Bahman Movaqar [Bahman AT BahmanM.com]
  */
-public interface SystemWord extends Word {
+public interface SysWord extends Word {
 
   @Override
   default boolean isSystemWord() {
@@ -35,8 +35,8 @@ public interface SystemWord extends Word {
    *
    * @param systat the snapshot of the system state before execution
    */
-  SystemState execute(
-    SystemState systat
+  Systat execute(
+    Systat systat
   );
 
 }

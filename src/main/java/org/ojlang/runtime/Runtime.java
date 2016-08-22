@@ -18,9 +18,9 @@ package org.ojlang.runtime;
 import lombok.Getter;
 import lombok.experimental.Accessors;
 import lombok.val;
-import org.ojlang.models.SystemStateImpl;
-import org.ojlang.models.contracts.SystemState;
-import org.ojlang.models.contracts.SystemWord;
+import org.ojlang.models.OjSystat;
+import org.ojlang.models.contracts.Systat;
+import org.ojlang.models.contracts.SysWord;
 
 import java.io.Serializable;
 import java.util.List;
@@ -38,7 +38,7 @@ public class Runtime implements Serializable {
   final static private long serialVersionUID = 8428732629851491287L;
 
   @Getter
-  private SystemState systat;
+  private Systat systat;
 
   /**
    * Private constructor.  Use `init`.
@@ -57,12 +57,12 @@ public class Runtime implements Serializable {
    */
   static public Runtime
   initClean(
-    List<SystemWord> sysWords
+    List<SysWord> sysWords
   ) {
     assert(sysWords != null);
     val runtime = new Runtime();
     val sysMemsize = sysWords.size();
-    runtime.systat = SystemStateImpl.create(
+    runtime.systat = OjSystat.create(
       createMem(),
       createDict(),
       createRS(),

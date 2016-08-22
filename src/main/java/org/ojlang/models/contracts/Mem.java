@@ -18,13 +18,13 @@ package org.ojlang.models.contracts;
 import java.io.Serializable;
 
 /**
- * Memory space.
+ * Mem space.
  * The granularity of memory cells is JVM object in contrast to normal Forth
  * systems whose cells are just bytes.
  *
  * @author Bahman Movaqar [Bahman AT BahmanM.com]
  */
-public interface Memory extends Serializable {
+public interface Mem extends Serializable {
 
   /**
    * Retrieves the current size of the memory.
@@ -48,7 +48,7 @@ public interface Memory extends Serializable {
    * @param obj the given object
    * @return the modified memory
    */
-  Memory add(Object obj);
+  Mem add(Object obj);
 
   /**
    * Puts an object at a given address overriding its previous contents.
@@ -57,6 +57,6 @@ public interface Memory extends Serializable {
    * @param addr the input memory address
    * @return the modified memory
    */
-  Memory put(Object obj, int addr);
+  Mem put(Object obj, int addr);
 
 }

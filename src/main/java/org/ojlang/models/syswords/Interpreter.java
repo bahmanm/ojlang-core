@@ -15,21 +15,21 @@
  */
 package org.ojlang.models.syswords;
 
-import org.ojlang.models.contracts.SystemState;
+import org.ojlang.models.contracts.Systat;
 
 /**
  * Interpreter word.
  *
  * @author Bahman Movaqar [Bahman AT BahmanM.com]
  */
-public class Interpreter extends AbstractSystemWord {
+public class Interpreter extends AbstractSysWord {
 
   final static private long serialVersionUID = -1299211002338774173L;
 
   @Override
-  public SystemState
+  public Systat
   execute(
-    SystemState systat
+    Systat systat
   ) {
     throw new UnsupportedOperationException();
   }

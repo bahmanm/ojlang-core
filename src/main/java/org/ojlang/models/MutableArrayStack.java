@@ -25,7 +25,7 @@ import org.ojlang.models.contracts.Stack;
  * @see Stack
  * @author Bahman Movaqar [Bahman AT BahmanM.com]
  */
-public class StackImpl<T> implements Stack<T> {
+public class MutableArrayStack<T> implements Stack<T> {
 
   final static private long serialVersionUID = 2430546690528947971L;
 

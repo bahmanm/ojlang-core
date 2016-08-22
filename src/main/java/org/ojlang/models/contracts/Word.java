@@ -26,7 +26,7 @@ import java.io.Serializable;
  * memory address, denoting a version of thw world, points to the beginning of
  * its definition in memory.
  *
- * @see Memory
+ * @see Mem
  * @author Bahman Movaqar [Bahman AT BahmanM.com]
  */
 public interface Word extends Serializable {

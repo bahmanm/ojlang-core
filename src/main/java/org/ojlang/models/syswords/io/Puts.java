@@ -15,8 +15,8 @@
  */
 package org.ojlang.models.syswords.io;
 
-import org.ojlang.models.contracts.SystemState;
-import org.ojlang.models.syswords.AbstractSystemWord;
+import org.ojlang.models.contracts.Systat;
+import org.ojlang.models.syswords.AbstractSysWord;
 
 /**
  * (String -- )
@@ -24,10 +24,10 @@ import org.ojlang.models.syswords.AbstractSystemWord;
  *
  * @author Bahman Movaqar [Bahman AT BahmanM.com]
  */
-public class Puts extends AbstractSystemWord {
+public class Puts extends AbstractSysWord {
 
   @Override
-  public SystemState execute(SystemState systat) {
+  public Systat execute(Systat systat) {
     System.out.print(systat.ps().pop());
     return systat;
   }

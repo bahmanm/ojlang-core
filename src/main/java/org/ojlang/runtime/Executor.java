@@ -16,8 +16,8 @@
 package org.ojlang.runtime;
 
 import org.ojlang.models.Xt;
-import org.ojlang.models.contracts.SystemState;
-import org.ojlang.models.contracts.SystemWord;
+import org.ojlang.models.contracts.Systat;
+import org.ojlang.models.contracts.SysWord;
 
 /**
  * The executor infinite loop.
@@ -28,7 +28,7 @@ public class Executor {
 
   static public void
   run(
-    SystemState systat
+    Systat systat
   ) {
     while (true) {
       Object obj = systat.mem().get(systat.xp());
@@ -43,15 +43,15 @@ public class Executor {
     }
   }
 
-  static private SystemState
+  static private Systat
   executeWord(
-    SystemState systat, Xt xt
+    Systat systat, Xt xt
   ) {
     if (xt.value() < systat.sysMemSize()) {
       String wordName = (String) systat.mem().get(
         xt.value()
       );
-      SystemWord word = (SystemWord) systat.dict().get(wordName);
+      SysWord word = (SysWord) systat.dict().get(wordName);
       word.execute(systat);
       systat.xp(
         systat.xp() + 1
@@ -67,9 +67,9 @@ public class Executor {
     return systat;
   }
 
-  static private SystemState
+  static private Systat
   executeReturn(
-    SystemState systat, Return ret
+    Systat systat, Return ret
   ) {
     systat.xp(
       systat.rs().pop()
@@ -77,9 +77,9 @@ public class Executor {
     return systat;
   }
 
-  static private SystemState
+  static private Systat
   executeObject(
-    SystemState systat, Object obj
+    Systat systat, Object obj
   ) {
     systat.ps().push(obj);
     systat.xp(

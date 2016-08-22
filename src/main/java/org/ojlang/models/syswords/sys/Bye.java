@@ -15,8 +15,8 @@
  */
 package org.ojlang.models.syswords.sys;
 
-import org.ojlang.models.contracts.SystemState;
-import org.ojlang.models.syswords.AbstractSystemWord;
+import org.ojlang.models.contracts.Systat;
+import org.ojlang.models.syswords.AbstractSysWord;
 
 /**
  * ( -- )
@@ -24,10 +24,10 @@ import org.ojlang.models.syswords.AbstractSystemWord;
  *
  * @author Bahman Movaqar [Bahman AT BahmanM.com]
  */
-public class Bye extends AbstractSystemWord {
+public class Bye extends AbstractSysWord {
 
   @Override
-  public SystemState execute(SystemState systat) {
+  public Systat execute(Systat systat) {
     System.exit(0);
     return systat;
   }

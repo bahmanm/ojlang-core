@@ -29,7 +29,7 @@ public class WordImpl implements Word {
   final static private long serialVersionUID = 350197946204676041L;
 
   private String name;
-  final private StackImpl<Xt> memAddresses = new StackImpl<Xt>();
+  final private MutableArrayStack<Xt> memAddresses = new MutableArrayStack<Xt>();
 
   private WordImpl() {}
 

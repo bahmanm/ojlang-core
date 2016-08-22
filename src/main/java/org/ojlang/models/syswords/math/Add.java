@@ -16,8 +16,8 @@
 package org.ojlang.models.syswords.math;
 
 import lombok.val;
-import org.ojlang.models.contracts.SystemState;
-import org.ojlang.models.syswords.AbstractSystemWord;
+import org.ojlang.models.contracts.Systat;
+import org.ojlang.models.syswords.AbstractSysWord;
 
 /**
  * ( n1 n2 -- n3 )
@@ -27,10 +27,10 @@ import org.ojlang.models.syswords.AbstractSystemWord;
  * into the stack.
  * @author Bahman Movaqar [Bahman AT BahmanM.com]
  */
-public class Add extends AbstractSystemWord {
+public class Add extends AbstractSysWord {
 
   @Override
-  public SystemState execute(SystemState systat) {
+  public Systat execute(Systat systat) {
     val op1 = (Integer)systat.ps().pop();
     val op2 = (Integer)systat.ps().pop();
     systat.ps().push(op1 + op2);

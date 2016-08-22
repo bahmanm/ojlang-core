@@ -23,7 +23,7 @@ import java.io.Serializable;
  *
  * @author Bahman Movaqar [Bahman AT BahmanM.com]
  */
-public interface SystemState extends Serializable {
+public interface Systat extends Serializable {
 
   /**
    * System execution pointer
@@ -38,35 +38,35 @@ public interface SystemState extends Serializable {
    * @param newXp new XP
    * @return modified system state
    */
-  SystemState xp(int newXp);
+  Systat xp(int newXp);
 
   /**
    * System memory.
    *
    * @return system memory
    */
-  Memory mem();
+  Mem mem();
 
   /**
    * System dictionary
    *
    * @return system dictionary
    */
-  Dictionary dict();
+  Dict dict();
 
   /**
    * System return stack
    *
    * @return system return stack
    */
-  ReturnStack rs();
+  RS rs();
 
   /**
    * System parameter stack
    *
    * @return system parameter stack
    */
-  ParamStack ps();
+  PS ps();
 
   /**
    * System memory size; i.e. number of system words registered in Oj

@@ -15,8 +15,8 @@
  */
 package org.ojlang
 
-import org.ojlang.models.SystemStateImpl
-import org.ojlang.models.contracts.SystemState
+import org.ojlang.models.OjSystat
+import org.ojlang.models.contracts.Systat
 
 import static org.ojlang.models.ModelFactory.*
 
@@ -25,8 +25,8 @@ import static org.ojlang.models.ModelFactory.*
  */
 class TestUtils {
 
-  static SystemState freshSystat() {
-    SystemStateImpl.create(
+  static Systat freshSystat() {
+    OjSystat.create(
       createMem(),
       createDict(),
       createRS(),

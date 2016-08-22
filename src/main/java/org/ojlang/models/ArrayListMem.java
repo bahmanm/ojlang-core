@@ -17,17 +17,17 @@ package org.ojlang.models;
 
 import org.eclipse.collections.impl.list.mutable.FastList;
 import org.ojlang.exceptions.InvalidMemoryAddressException;
-import org.ojlang.models.contracts.Memory;
+import org.ojlang.models.contracts.Mem;
 
 import java.util.List;
 
 /**
- * Memory implementation based on an array list.
+ * Mem implementation based on an array list.
  *
- * @see Memory
+ * @see Mem
  * @author Bahman Movaqar [Bahman AT BahmanM.com]
  */
-public class MemoryImpl implements Memory {
+public class ArrayListMem implements Mem {
 
   final static private long serialVersionUID = 1533347084298802483L;
 
@@ -48,14 +48,14 @@ public class MemoryImpl implements Memory {
   }
 
   @Override
-  public Memory
+  public Mem
   add(Object obj) {
     delegate.add(obj);
     return this;
   }
 
   @Override
-  public Memory
+  public Mem
   put(
     Object obj, int addr
   ) {

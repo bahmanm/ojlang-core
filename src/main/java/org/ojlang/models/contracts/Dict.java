@@ -13,41 +13,33 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.ojlang.models.syswords;
+package org.ojlang.models.contracts;
 
-import org.ojlang.models.Xt;
-import org.ojlang.models.contracts.SystemWord;
-import org.ojlang.models.contracts.Word;
+import java.io.Serializable;
 
 /**
+ * Oj dictionary; a mapping of names to words.
+ *
+ * @see Word
  * @author Bahman Movaqar [Bahman AT BahmanM.com]
  */
-abstract public class AbstractSystemWord implements SystemWord {
+public interface Dict extends Serializable {
 
-  @Override
-  public int
-  popXt() {
-    throw new RuntimeException("Illegal operation on a system word");
-  }
+  /**
+   * Retrieves a word by its name.
+   *
+   * @param name the input name
+   * @return the word; should throw a runtime exception if no such word exists.
+   */
+  Word get(String name);
 
-  @Override
-  public int
-  xt() {
-    throw new RuntimeException("Illegal operation on a system word");
-  }
-
-  @Override
-  public Word
-  pushXt(
-    Xt addr
-  ) {
-    throw new RuntimeException("Illegal operation on a system word");
-  }
-
-  @Override
-  final public boolean
-  isSystemWord() {
-    return false;
-  }
+  /**
+   * Puts a word into the dictionary.
+   * Uses the name of the word as the dictionary key.
+   *
+   * @param word the input word
+   * @return the modified dictionary.
+   */
+  Dict put(Word word);
 
 }
