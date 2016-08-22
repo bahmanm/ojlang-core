@@ -21,16 +21,5 @@ import org.ojlang.sysdef.Systat
  * @author Bahman Movaqar [Bahman AT BahmanM.com]
  */
 class TestUtils {
-
-  static Systat freshSystat() {
-    ObjectFactory.createSystat(
-      ObjectFactory.createMem(),
-      ObjectFactory.createDict(),
-      ObjectFactory.createRS(),
-      ObjectFactory.createPS(),
-      0,
-      0
-    )
-  }
-
+  
 }
