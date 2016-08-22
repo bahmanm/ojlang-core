@@ -13,19 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.ojlang.sysdef;
 
-import org.ojlang.sysdef.impls.ArrayListMem;
-import org.ojlang.sysdef.impls.HashMapDict;
-import org.ojlang.sysdef.impls.MutablePS;
-import org.ojlang.sysdef.impls.MutableRS;
+package org.ojlang;
+
+import org.ojlang.sysdef.*;
+import org.ojlang.sysdef.impls.*;
 
 /**
- * A collection of factory methods to create Oj runtime sysdef.
+ * A collection of factory methods for almost anything in Oj.
  *
  * @author Bahman Movaqar [Bahman AT BahmanM.com]
  */
-final public class ModelFactory {
+final public class ObjectFactory {
 
   /**
    * Creates a new memory.
@@ -61,6 +60,16 @@ final public class ModelFactory {
    */
   static public Dict createDict() {
     return new HashMapDict();
+  }
+
+  /**
+   * Creates a new stack.
+   *
+   * @param <T> stack element type
+   * @return a new stack
+   */
+  static public <T> Stack<T> createStack() {
+    return new MutableArrayStack<T>();
   }
 
 }
