@@ -103,6 +103,8 @@ final public class ObjectFactory {
     result.rs(rs);
     result.xp(xp);
     result.sysMemSize(sysMemSize);
+    result.stdIn(createStdIn());
+    result.stdOut(createStdOut());
     return result;
   }
 

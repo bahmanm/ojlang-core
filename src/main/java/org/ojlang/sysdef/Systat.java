@@ -15,6 +15,9 @@
  */
 package org.ojlang.sysdef;
 
+import org.ojlang.runtime.sysio.StdIn;
+import org.ojlang.runtime.sysio.StdOut;
+
 import java.io.Serializable;
 
 /**
@@ -74,5 +77,19 @@ public interface Systat extends Serializable {
    * @return system memory size
    */
   int sysMemSize();
+
+  /**
+   * STDIN
+   *
+   * @return STDIN
+   */
+  StdIn stdIn();
+
+  /**
+   * STDOUT
+   *
+   * @return STDOUT
+   */
+  StdOut stdOut();
 
 }

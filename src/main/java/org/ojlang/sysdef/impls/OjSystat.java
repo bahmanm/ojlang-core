@@ -18,7 +18,8 @@ package org.ojlang.sysdef.impls;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
-import lombok.val;
+import org.ojlang.runtime.sysio.StdIn;
+import org.ojlang.runtime.sysio.StdOut;
 import org.ojlang.sysdef.*;
 
 /**
@@ -47,5 +48,11 @@ public class OjSystat implements Systat {
 
   @Getter @Setter
   private int sysMemSize;
+
+  @Getter @Setter
+  private StdIn stdIn;
+
+  @Getter @Setter
+  private StdOut stdOut;
 
 }
