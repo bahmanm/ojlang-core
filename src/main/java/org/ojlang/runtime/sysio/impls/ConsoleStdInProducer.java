@@ -15,6 +15,7 @@
  */
 package org.ojlang.runtime.sysio.impls;
 
+import lombok.Synchronized;
 import lombok.val;
 import org.ojlang.exceptions.SysIoException;
 import org.ojlang.runtime.sysio.StdIn;
@@ -32,11 +33,18 @@ import java.io.InputStreamReader;
 public class ConsoleStdInProducer implements StdInProducer {
 
   private StdIn stdin;
+  private boolean isShutdown = false;
 
   @Override
-  public StdInProducer setStdIn(StdIn stdin) {
+  public StdInProducer stdIn(StdIn stdin) {
     this.stdin = stdin;
     return this;
+  }
+
+  @Synchronized
+  @Override
+  public void isShutdown(boolean isShutdown) {
+    this.isShutdown = isShutdown;
   }
 
   @Override
@@ -45,7 +53,7 @@ public class ConsoleStdInProducer implements StdInProducer {
       throw new RuntimeException("Invalid StdIn.");
     else {
       val reader = new BufferedReader(new InputStreamReader(System.in));
-      while (true) {
+      while (!isShutdown) {
         try {
           stdin.put(reader.readLine());
         } catch (IOException e) {

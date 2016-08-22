@@ -15,6 +15,7 @@
  */
 package org.ojlang.runtime.sysio.impls;
 
+import lombok.Synchronized;
 import org.ojlang.runtime.sysio.StdOut;
 import org.ojlang.runtime.sysio.StdOutConsumer;
 
@@ -24,11 +25,18 @@ import org.ojlang.runtime.sysio.StdOutConsumer;
 public class ConsoleStdOutConsumer implements StdOutConsumer {
 
   private StdOut stdout;
+  private boolean isShutdown = false;
 
   @Override
-  public StdOutConsumer setStdOut(StdOut stdout) {
+  public StdOutConsumer stdOut(StdOut stdout) {
     this.stdout = stdout;
     return this;
+  }
+
+  @Synchronized
+  @Override
+  public void isShutdown(boolean isShutdown) {
+    this.isShutdown = isShutdown;
   }
 
   @Override
@@ -36,8 +44,11 @@ public class ConsoleStdOutConsumer implements StdOutConsumer {
     if (stdout == null)
       throw new RuntimeException("Invalid StdOut");
     else
-      while(true)
-        System.out.print(stdout.get());
+      while(!isShutdown) {
+        String s = stdout.get();
+        if (s != null)
+          System.out.print(s);
+      }
   }
 
 }
