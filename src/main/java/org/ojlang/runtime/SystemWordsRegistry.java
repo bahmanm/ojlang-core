@@ -25,6 +25,7 @@ import org.ojlang.syswords.math.Add;
 import org.ojlang.syswords.sys.Bye;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Registry of Oj system words.
@@ -36,7 +37,7 @@ public class SystemWordsRegistry implements Serializable {
   final static private long serialVersionUID = 4672296437456620599L;
 
   @Accessors(fluent=true) @Getter
-  final private static FastList<SysWord> words = FastList.newListWith(
+  final private static List<SysWord> words = FastList.newListWith(
     new Interpreter(),
     new Puts(),
     new Bye(),
